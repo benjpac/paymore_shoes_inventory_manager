@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="/style.css">
+    <title>Paymore Shoes</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="panel-title" id="main-title">Paymore Shoes</h1>
+        </div>
+        <div class="panel-body">
+          <%= yield %>
+        </div>
+      </div>
+      <a href="/">Home</a>
+      <br><br>
+      <form class="form-group" action="/clear_all" method="post">
+        <button type="submit">Clear Database</button>
+      </form>
+    </div>
+  </body>
+</html>
