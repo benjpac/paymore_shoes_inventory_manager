@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
-  database: shoe_store_development
+  database: paymore_shoes_inventory_manager_development
 
 test:
   adapter: postgresql
-  database: shoe_store_test
+  database: paymore_shoes_inventory_managere_test
