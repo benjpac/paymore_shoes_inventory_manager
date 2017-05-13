@@ -4,4 +4,4 @@ development:
 
 test:
   adapter: postgresql
-  database: paymore_shoes_inventory_managere_test
+  database: paymore_shoes_inventory_manager_test

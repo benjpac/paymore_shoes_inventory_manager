@@ -14,7 +14,7 @@ class CreateTables < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    create_table :inventory do |t|
+    create_table :inventories do |t|
       t.column :model_id, :integer
       t.column :store_id, :integer
       t.column :amount, :integer

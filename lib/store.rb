@@ -1,6 +1,6 @@
 class Store < ActiveRecord::Base
   has_many :inventories
-  has_many :models, through: :inventory
+  has_many :models, through: :inventories
 
-  validates :name, :presence => true
+  validates :name, presence: true
 end

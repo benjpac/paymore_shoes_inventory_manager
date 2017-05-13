@@ -1,17 +1,14 @@
 require 'spec_helper'
 
 describe Inventory do
-  # it 'create a user, create a recipe, push recipe to user' do
-  #   user = User.create({:name => 'Zach'})
-  #   recipe = Recipe.create({:name => 'Good recipe'})
-  #   user.recipes.push(recipe)
-  #   expect(user.recipes()).to eq([recipe])
-  # end
-  # it 'create a user, create a recipe with instructions and ingredients, push recipe to user' do
-  #   user = User.create({:name => 'Zach'})
-  #   recipe = Recipe.create({:name => 'Good recipe'})
-  #   user.recipes.push(recipe)
-  #   expect(user.recipes()).to eq([recipe])
-  #   expect(recipe.users()).to eq([user])
-  # end
+  it { should belong_to(:model) }
+  it { should belong_to(:store) }
+
+  it 'returns inventory amount' do
+    store = Store.create(name: 'Tukwila')
+    model = store.models.create(name: 'Jordan 2016', price: 120)
+    inventory = store.inventories.where(model: model.id).first
+    inventory[:amount] = 1
+    expect(inventory.amount).to eq(1)
+  end
 end

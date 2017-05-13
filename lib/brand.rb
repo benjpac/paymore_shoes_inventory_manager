@@ -1,5 +1,5 @@
 class Brand < ActiveRecord::Base
   has_many :models
 
-  validates :name, :presence => true
+  validates :name, presence: true
 end
