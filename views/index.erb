@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-6">
+    <h5>Stores</h5>
+    <% @stores.each do |store| %>
+
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <div class="input-field">
+      <form action="/store/new" method="post">
+        <input id="name" type="text" name="name">
+        <button class="btn waves-effect waves-light" type="submit">Add Store
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <h5>Brands</h5>
+    <% @brands.each do |brand| %>
+      <h6><a href="/brand/<%= brand.id %>"><%= brand.name %> </a></h6>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <h5>New Brand</h5>
+    <div class="input-field">
+      <form action="/brand/new" method="post">
+        <input id="name" type="text" name="name">
+        <button class="btn waves-effect waves-light" type="submit">Add Brand
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

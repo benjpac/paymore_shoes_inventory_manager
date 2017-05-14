@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-12">
+    <h3><%= @brand.name %></h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <ul>
+      <% @brand.models.each do |model| %>
+        <li><%= model.name %> - <%= convert_to_money(model.price) %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <form action="/brand/<%= @brand.id %>/model/new" method="post">
+      <label for="name">Name</label>
+      <input type="text" name="name" required>
+      <label for="price">Price</label>
+      <input type="number" name="price" required>
+      <button class="btn waves-effect waves-light" type="submit">Add Model
+      </button>
+    </form>
+  </div>
+</div>

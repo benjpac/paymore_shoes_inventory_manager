@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-12">
+    <h3><%= @store.name %></h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <ul>
+      <% @store.models.each do |model| %>
+        <li><%= model.name %> - <%= convert_to_money(model.price) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
