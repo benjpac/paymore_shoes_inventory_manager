@@ -11,12 +11,28 @@ get '/' do
 end
 
 get '/brand/:brand_id' do
-  @brand = Brand.find(params['brand_id'].to_i)
+  @brand = Brand.find(params[:brand_id].to_i)
   erb :brand
 end
 
 get '/store/:store_id' do
-  @store = Store.find(params['store_id'].to_i)
+  @brands = Brand.all
+  @store = Store.find(params[:store_id].to_i)
+  erb :store
+end
+
+get '/store/:store_id/brand/:brand_id' do
+  @brands = Brand.all
+  @store = Store.find(params[:store_id].to_i)
+  @brand = Brand.find(params[:brand_id].to_i)
+  erb :store
+end
+
+get '/store/:store_id/brand/:brand_id/model/:model_id' do
+  @brands = Brand.all
+  @store = Store.find(params[:store_id].to_i)
+  @brand = Brand.find(params[:brand_id].to_i)
+  @model = Model.find(params[:model_id].to_i)
   erb :store
 end
 
@@ -52,19 +68,40 @@ post '/brand/:brand_id/model/new' do
   end
 end
 
+post '/store/:store_id/select_brand' do
+  store = Store.find(params[:store_id].to_i)
+  brand = Brand.find(params[:brand_id].to_i)
+  redirect '/store/'+store.id.to_s+'/brand/'+brand.id.to_s
+end
+
+post '/store/:store_id/brand/:brand_id/select_model' do
+  store = Store.find(params[:store_id].to_i)
+  brand = Brand.find(params[:brand_id].to_i)
+  model = Model.find(params[:model_id].to_i)
+  redirect '/store/'+store.id.to_s+'/brand/'+brand.id.to_s+'/model/'+model.id.to_s
+end
+
 post '/clear_all' do
   clear_all
+  @stores = Store.all
   @brands = Brand.all
   erb :index
+end
+
+patch '/store/:store_id/brand/:brand_id/model/:model_id' do
+  store = Store.find(params[:store_id].to_i)
+  brand = Brand.find(params[:brand_id].to_i)
+  model = Model.find(params[:model_id].to_i)
+  redirect '/store/'+store.id.to_s
 end
 
 def convert_to_cents(string)
   string.tr!("$", "")
   if string.include?(".")
     string.tr!(".", "")
-    return string.to_i()
+    return string.to_i
   else
-    return string.to_i() * 100
+    return string.to_i * 100
   end
 end
 

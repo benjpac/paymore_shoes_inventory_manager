@@ -12,3 +12,38 @@
     </ul>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-12">
+    <h5>Select Brand</h5>
+    <form action="/store/<%= @store.id %>/select_brand" method="post">
+      <select name="brand_id" class="form-control" onchange='if(this.value != 0) { this.form.submit(); }'>
+        <option selected>Select Brand</option>
+        <% @brands.each do |brand| %>
+          <option value="<%= brand.id %>"><%= brand.name %></option>
+        <% end %>
+      </select>
+    </form>
+  </div>
+</div>
+<% if @brand != nil %>
+  <div class="row">
+    <div class="col-md-12">
+      <h5>Select <%= @brand.name %> Model</h5>
+      <form action="/store/<%= @store.id %>/brand/<%= @brand.id %>/select_model" method="post">
+        <select name="model_id" class="form-control onchange='if(this.value != 0) { this.form.submit(); }">
+          <option selected>Select Model</option>
+          <% @brand.models.each do |model| %>
+            <option value="<%= model.id %>"><%= model.name %> - <%= convert_to_money(model.price) %></option>
+          <% end %>
+        </select>
+      </form>
+    </div>
+  </div>
+<% end %>
+<% if @model != nil %>
+  <div class="row">
+    <div class="col-md-12">
+      <h5><%= @model.name %></h5>
+    </div>
+  </div>
+<% end %>
