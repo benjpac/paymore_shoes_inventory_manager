@@ -4,10 +4,13 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6">
     <ul>
       <% @store.models.each do |model| %>
-        <li><%= model.name %> - <%= convert_to_money(model.price) %></li>
+        <li>
+          <%= @store.inventories.where(model_id: model.id).first.amount %> -
+          <%= model.name %> - <%= convert_to_money(model.price) %>
+        </li>
       <% end %>
     </ul>
   </div>
@@ -30,7 +33,7 @@
     <div class="col-md-12">
       <h5>Select <%= @brand.name %> Model</h5>
       <form action="/store/<%= @store.id %>/brand/<%= @brand.id %>/select_model" method="post">
-        <select name="model_id" class="form-control onchange='if(this.value != 0) { this.form.submit(); }">
+        <select name="model_id" class="form-control" onchange='if(this.value != 0) { this.form.submit(); }'>
           <option selected>Select Model</option>
           <% @brand.models.each do |model| %>
             <option value="<%= model.id %>"><%= model.name %> - <%= convert_to_money(model.price) %></option>
@@ -44,6 +47,14 @@
   <div class="row">
     <div class="col-md-12">
       <h5><%= @model.name %></h5>
+      <p> <%= convert_to_money(@model.price) %></p>
+      <form action="/store/<%= @store.id %>/brand/<%= @brand.id %>/model/<%= @model.id %>" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <label for="quantity">Enter Quantity</label>
+        <input type="number" name="quantity">
+        <button class="btn waves-effect waves-light" type="submit">Add to Inventory
+        </button>
+      </form>
     </div>
   </div>
 <% end %>

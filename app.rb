@@ -92,6 +92,9 @@ patch '/store/:store_id/brand/:brand_id/model/:model_id' do
   store = Store.find(params[:store_id].to_i)
   brand = Brand.find(params[:brand_id].to_i)
   model = Model.find(params[:model_id].to_i)
+  add_model_to_inventory = store.models.create(name: model.name, price: model.price)
+  model_inventory = store.inventories.where(model: add_model_to_inventory.id).first
+  model_inventory.update(amount: params[:quantity].to_i)
   redirect '/store/'+store.id.to_s
 end
 
