@@ -8,7 +8,8 @@
     <ul>
       <% @store.models.each do |model| %>
         <li>
-          <%= @store.inventories.where(model_id: model.id).first.amount %> -
+          <%= @store.inventories.where(model_id: model.id).first.amount %>
+          <%= model.brand.name %>
           <%= model.name %> - <%= convert_to_money(model.price) %>
         </li>
       <% end %>
