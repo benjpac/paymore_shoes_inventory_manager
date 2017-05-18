@@ -11,7 +11,9 @@ describe Store do
     brand = Brand.create(name: 'Nike')
     model = brand.models.create(name: "2017 Jordan", price: 120)
     expect(model.brand).to eq(brand)
-    store = model.stores.create(name: 'Tukwila')
+    store = Store.create(name: 'Tukwila')
+    binding.pry
+    store.models.push(model)
     expect(store.models).to eq([model])
   end
 end
