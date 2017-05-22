@@ -10,3 +10,10 @@ require('capybara/rspec')
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 require './app'
+
+before() do
+  Brand.destroy_all
+  Store.destroy_all
+  Inventory.destroy_all
+  Model.destroy_all
+end

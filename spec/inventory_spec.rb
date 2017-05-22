@@ -9,7 +9,6 @@ describe Inventory do
   #   model = brand.models.create(name: 'Jordan 2016', price: 120)
   #   store = Store.create(name: 'Tukwila')
   #   store.models.push(model)
-  #   binding.pry
   #   inventory = store.inventories.where(model: model.id).first
   #   inventory[:amount] = 1
   #   expect(inventory.amount).to eq(1)

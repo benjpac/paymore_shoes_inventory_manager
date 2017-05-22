@@ -37,7 +37,7 @@ get '/store/:store_id/brand/:brand_id/model/:model_id' do
 end
 
 post '/store/new' do
-  name = params[:name]
+  name = params[:store]
   store = Store.create(name: name)
   if store.save
     redirect '/store/'+store.id.to_s
@@ -47,7 +47,7 @@ post '/store/new' do
 end
 
 post '/brand/new' do
-  name = params[:name]
+  name = params[:brand]
   brand = Brand.create(name: name)
   if brand.save
     redirect '/brand/'+brand.id.to_s

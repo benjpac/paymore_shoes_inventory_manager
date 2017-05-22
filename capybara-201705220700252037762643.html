@@ -27,15 +27,35 @@
               <h1 class="panel-title" id="main-title">Paymore Shoes Inventory Manager</h1>
             </div>
             <div class="panel-body">
-              <%= yield %>
+              <div class="row">
+  <div class="col-md-12">
+    <h3>Nike</h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <ul>
+      
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <form action="/brand/80/model/new" method="post">
+      <label for="name">Name</label>
+      <input type="text" name="name" required>
+      <label for="price">Price</label>
+      <input type="number" step="any" name="price" required>
+      <button class="btn waves-effect waves-light" type="submit">Add Model
+      </button>
+    </form>
+  </div>
+</div>
+
             </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <a href="/"><h5>Home</h5></a>
-          <br>
           <form class="form-group" action="/clear_all" method="post">
             <button class="btn waves-effect waves-light" type="submit" id="delete">Clear Database</button>
           </form>

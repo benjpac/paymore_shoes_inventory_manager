@@ -10,14 +10,14 @@ describe Model do
   end
   it 'creates a brand and two models that belong to that brand' do
     brand = Brand.create(name: "Nike")
-    model = brand.models.create(name: "2017 Jordan", price: 120)
+    model = brand.models.create(name: "2017 jordan", price: 120)
     model1 = brand.models.create(name: "2017 Jordan", price: 120)
     expect(model.brand).to eq(brand)
     expect(brand.models).to eq([model, model1])
   end
-  # it 'captalizes on before save' do
-  #   model = Model.new(name: 'air jordan')
-  #   model.save
-  #   expect(model.name).to eq('Air Jordan')
-  # end
+  it 'captalizes on before save' do
+    model = Model.new(name: 'test shoe')
+    model.save
+    expect(model.name).to eq('Test Shoe')
+  end
 end
