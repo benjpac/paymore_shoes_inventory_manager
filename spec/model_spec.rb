@@ -16,8 +16,7 @@ describe Model do
     expect(brand.models).to eq([model, model1])
   end
   it 'captalizes on before save' do
-    model = Model.new(name: 'test shoe')
-    model.save
+    model = Model.create(name: 'test shoe', price: 12)
     expect(model.name).to eq('Test Shoe')
   end
 end

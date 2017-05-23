@@ -11,9 +11,19 @@ Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 require './app'
 
-before() do
-  Brand.destroy_all
-  Store.destroy_all
-  Inventory.destroy_all
-  Model.destroy_all
+RSpec.configure do |config|
+  config.after(:each) do
+    Store.all().each do |store|
+      store.destroy()
+    end
+    Brand.all().each do |brand|
+      brand.destroy()
+    end
+    Store.all().each do |brand|
+      brand.destroy()
+    end
+    Model.all().each do |brand|
+      brand.destroy()
+    end
+  end
 end
