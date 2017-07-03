@@ -9,9 +9,7 @@ _This app is designed to track shoes and where they are for sale from the viewpo
 ## Setup/Installation Requirements
 _You will need Ruby and postgres to run this app locally. Find links below for detailed installation instructions.
 
-* _Run the command 'git clone https://github.com/twyststar/Ruby_Shoe_Stores'_
-
-* _In your command line, navigate to the Ruby_Shoe_Stores folder using 'cd Ruby_Shoe_Stores'_
+* _In your command line, navigate to the paymore_shoes_inventrory_manager folder using 'cd paymore_shoes_inventrory_manager'_
 * _Run command 'bundle install'_
 * _Use command t to open a second terminal window, in that window run the command 'psql'_
 * _Back in the original window, run command 'rake db:create db:migrate'_
